@@ -11,14 +11,10 @@ seed = 0.5284292289940231
 domain = (0, np.pi)
 
 # Ecuación general
-
-
 def F(x, i) -> float:
     return -np.sin(x)*np.power(np.sin((i*x**2)/np.pi), 2*m)
 
 # Ecuación a dos dimensiones
-
-
 def f(x, y): return F(x, 1)+F(y, 2)
 
 # Punto a buscar
@@ -66,20 +62,12 @@ while tolerancia > 0:
 best = (genetic.population[-1][0], genetic.population[-1][1], tops[-1])
 
 # Graficación del proceso
-# fig, (ax1, ax2) = plt.subplots(1,2)
-# fig.suptitle("Búsqueda con AG para Michalewicz")
-# ax1.plot(indexes, tops, label="Mejores")
-# ax1.plot(indexes, averages, label="Promedios")
-
-# # ax1.xlabel("Generación")
-# # ax1.ylabel("Evaluación")
-# ax1.legend()
-# plt.show()
 resolution = 150
 fig = plt.figure(figsize=plt.figaspect(0.4))
 fig.suptitle("Busqueda de solución mediante Algoritmos Evolutivos")
 fig.tight_layout(pad=10)
 
+# Evolucion
 ax = fig.add_subplot(1, 2, 2)
 ax.set_title("Evolución")
 ax.plot(indexes, tops, label="Mejores")
@@ -88,6 +76,7 @@ ax.set_xlabel("Generación")
 ax.set_ylabel("Evaluación")
 ax.legend()
 
+#Grafica de la función
 ax = fig.add_subplot(1, 2, 1, projection='3d')
 ax.set_title("Función de Michalewicz")
 x = np.linspace(0, np.pi, resolution)
